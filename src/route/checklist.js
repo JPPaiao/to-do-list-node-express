@@ -44,8 +44,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     let { id } = req.params
+    
     try {
-        let checklist = await ChecklistModel.findById(id)
+        let checklist = await ChecklistModel.findById(id).populate('tasks')
         res.status(200).render('checklists/show.ejs', { checklist: checklist})
     } catch (error) {
         res.status(422).render('pages/error', { error: 'Error ao exibir as listas de tarefas'})

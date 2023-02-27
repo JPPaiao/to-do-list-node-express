@@ -3,6 +3,7 @@ import path from "path"
 import url from 'url'
 import methodOverride  from "method-override"
 import checklistRouter from "./src/route/checklist.js"
+import taskRounter from "./src/route/task.js"
 import rootRouter from "./src/route/index.js"
 import "./config/database.js"
 
@@ -20,6 +21,7 @@ app.set('view engine', 'ejs')
 
 app.use('/', rootRouter)
 app.use('/checklists', checklistRouter)
+app.use('/checklists', taskRounter)
 
 app.listen(3000, () => {
     console.log('Server active')
